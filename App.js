@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import axios from 'axios';
 
 export default function App() {
   const [email, setEmail] = useState('');
@@ -12,12 +13,12 @@ export default function App() {
     // Don't forget to import 'axios' or use 'fetch' for making API requests
 
     // Example:
-     axios.post('http://localhost:8000/login', { email, password })
+     axios.post('http://192.168.1.4:8000/login', { email, password })
       .then(response => {
          console.log('Handle successful login')
       })
       .catch(error => {
-        console.log ('Handle login error')
+        console.log ('Handle login error',error)
        });
   };
 
@@ -38,7 +39,7 @@ export default function App() {
         secureTextEntry
       />
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Login</Text>
+        <Text style={styles.buttonText}>login</Text>
       </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
